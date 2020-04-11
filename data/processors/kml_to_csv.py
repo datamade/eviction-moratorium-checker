@@ -11,19 +11,22 @@ FOLDERS_TO_SEARCH = [
 def process_placemark(placemark):
     # For now, this is just grabbing addresses
     # We may want to save more data from the KML file later
-    try:
-        address = placemark.ExtendedData.find(
-            "Data", {"name": "Project Address"}
-        ).value.string
-    except AttributeError:
+
+    name = placemark.find('name').string
+
+    address = ''
+    address_fields = ['Project Address', 'Full Address', 'full_address']
+
+    for address_field in address_fields:
         try:
             address = placemark.ExtendedData.find(
-                "Data", {"name": "full_address"}
+                "Data", {"name": address_field}
             ).value.string
         except AttributeError:
-            address = ''
+            pass
 
     placemark_dict = {
+        'name': name,
         'address': address
     }
     return placemark_dict

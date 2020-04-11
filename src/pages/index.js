@@ -15,8 +15,8 @@ const IndexPage = ({data}) => {
           <Form.Label>All assisted properties:</Form.Label>
           <Form.Control as="select" size="lg">
             {data.assisted_properties.nodes.map((node) =>
-              <option value={node.address}>
-                {node.address}
+              <option value={node.id}>
+                {node.name}
               </option>
             )}
           </Form.Control>
@@ -32,6 +32,8 @@ export const query = graphql`
   query IndexQuery {
     assisted_properties:allAssistedPropertiesCsv {
       nodes {
+        id
+        name
         address
       }
     }
