@@ -2,8 +2,6 @@
 
 Checking eviction moratoriums by Illinois address. More TK.
 
-Map data source [here](https://www.google.com/maps/d/u/0/viewer?mid=1rTUDIwaq4dlHirLGDAqBCz25yJcrm9tr&ll=40.2560931278736%2C-76.87922612379938&z=5).
-
 ### 💾 Requirements
 
 - [Docker](https://docs.docker.com/install/)
@@ -25,6 +23,26 @@ Map data source [here](https://www.google.com/maps/d/u/0/viewer?mid=1rTUDIwaq4dl
     ```
 
     Your site should now be up and running at `http://localhost:8001`!
+
+### 🏡 Address Data
+
+The source data for assisted properties comes from [a map made by the Preservation Compact](https://www.google.com/maps/d/u/0/viewer?mid=1rTUDIwaq4dlHirLGDAqBCz25yJcrm9tr&ll=40.2560931278736%2C-76.87922612379938&z=5).
+
+To change what we're pulling into the site or remake the data, you'll need to set up a virtual environment:
+
+  ```
+  mkvirtualenv emc
+  pip install -r requirements.txt
+  ```
+
+In the future, to work on this repo you can just run `workon emc`.
+
+To clean out `data/final`: `make clean -C data`
+
+To remake it: `make all -C data`
+
+To change what we're pulling in to `final/assisted_properties.csv`, edit `processors/kml_to_csv.py`.
+
 
 ### 🤖 What's inside?
 _Taken from `gatsby-starter-default`_
