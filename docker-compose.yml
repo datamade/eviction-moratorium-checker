@@ -1,13 +1,12 @@
 version: '2.4'
 services:
   app:
-    build: .
+    build: ./app
     volumes:
-      - .:/app
-      - app_node_modules:/app/node_modules
+      - ./app:/usr/local/src
+      - app_node_modules:/usr/local/src/node_modules
     ports:
       - 8000:8000
-    entrypoint: yarn
     # 'develop' is a custom Node.js script defined in app/package.json.
     command: develop
 

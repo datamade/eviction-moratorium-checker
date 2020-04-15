@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "bootstrap": "4.4.1",
+    "fuse.js": "^5.1.0",
     "gatsby": "^2.19.45",
     "gatsby-image": "^2.2.44",
     "gatsby-plugin-manifest": "^2.2.48",
@@ -19,7 +20,8 @@
     "react": "^16.12.0",
     "react-bootstrap": "1.0.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "react-use-fuzzy": "^1.0.4"
   },
   "devDependencies": {
     "prettier": "^1.19.1"

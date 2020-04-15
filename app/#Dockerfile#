@@ -5,6 +5,8 @@ WORKDIR /app
 COPY package*.json yarn.lock ./
 
 RUN yarn install
+RUN yarn start
+RUN gatsby build
 
 ENTRYPOINT [ "yarn" ]
 CMD [ "start" ]
