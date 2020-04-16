@@ -1,11 +1,12 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import { Form } from "react-bootstrap"
+import { Form, Table } from "react-bootstrap"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import Fuse from "fuse.js";
+
 
 
 function fuzzySearch({ fuse, data, term }) {
@@ -39,7 +40,7 @@ function useFuse({ data, options }) {
 }
 
 
-function MyComponent({complexes}){
+function PropertySearch({complexes}){
 
     // This is Fuse specific options. Read more at
     // https://fusejs.io/#examples
@@ -54,21 +55,26 @@ function MyComponent({complexes}){
     });
 
     return (
-        <div>
-            <input
-                onChange={e => search(e.target.value)}
-                value={term}
-                placeholder="Search for a property..."
-            />
+	<div>
+	<Form>
+        <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Control
+	    placeholder="Search by address or apartment name"
+	    type="search"
+	    size="lg"
+	    onChange={e => search(e.target.value)}
+	    />
+        </Form.Group>
+	</Form>
 
-	      <table>
+	      <Table responsive>
               {result.slice(0, 10).map(complex => (
                     <tr>
                       <td>{complex.item.name}</td><td>{complex.item.address}</td>
 		      </tr>
               ))}
-	</table>
-        </div>
+	</Table>
+	    </div>
     )
 }
 
@@ -77,8 +83,10 @@ const IndexPage = ({data}) => {
   return (
     <Layout>
       <SEO title="Home" />
-
-    <MyComponent complexes={data.assisted_properties.nodes} />
+      
+    <p>Text here that explains what the thing is and how to use it.</p>
+      
+    <PropertySearch complexes={data.assisted_properties.nodes} />
 	  
     </Layout>
   )
